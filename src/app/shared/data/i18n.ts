@@ -1,7 +1,9 @@
 export const i18n = {
   global: {
     brand: 'Marcas Internacionales',
-    secureAndEncrypted: 'Seguro y Encriptado'
+    secureAndEncrypted: 'Seguro y Encriptado',
+    currency: 'PEN',
+    currencySymbol: 'S/'
   },
   navbar: {
     links: {
@@ -81,8 +83,8 @@ export const i18n = {
       category: 'Categoría',
       family: 'Familia Olfativa',
       price: 'Precio',
-      minPrice: 'Min €',
-      maxPrice: 'Max €'
+      minPrice: 'Min S/',
+      maxPrice: 'Max S/'
     }
   },
   productDetail: {
@@ -97,6 +99,11 @@ export const i18n = {
       heartValue: 'Papiro, Madera de sándalo australiano',
       base: 'Notas de fondo',
       baseValue: 'Madera de cedro, Cuero, Almizcle'
+    },
+    notFound: {
+      title: 'Colección Desconocida',
+      message: 'El producto solicitado no forma parte de nuestro catálogo actual de Marcas Internacionales.',
+      cta: 'Explorar la Tienda'
     }
   },
   cart: {

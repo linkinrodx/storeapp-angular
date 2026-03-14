@@ -6,11 +6,12 @@ export interface Product {
     family: string;
     category: string;
     concentration?: string;
+    imageUrl?: string[];
 }
 
 export const PRODUCTS: Product[] = [
-    { id: 1, name: 'Santal 33', brand: 'LE LABO', price: 280, family: 'wood', category: 'perfume', concentration: 'Eau de Parfum' },
-    { id: 2, name: 'Baccarat Rouge 540', brand: 'MAISON FRANCIS KURKDJIAN', price: 345, family: 'oriental', category: 'perfume', concentration: 'Extrait' },
+    { id: 1, name: 'Santal 33', brand: 'LE LABO', price: 280, family: 'wood', category: 'perfume', concentration: 'Eau de Parfum', imageUrl: ['https://res.cloudinary.com/dg7zm6lwk/image/upload/v1773466479/luxury_perfume_bottle_minimalist_1773465418114_p6s2t1.png'] },
+    { id: 2, name: 'Baccarat Rouge 540', brand: 'MAISON FRANCIS KURKDJIAN', price: 345, family: 'oriental', category: 'perfume', concentration: 'Extrait', imageUrl: ["https://res.cloudinary.com/dg7zm6lwk/image/upload/v1773466479/luxury_skincare_serum_bottle_1773465433066_zlxcin.png"] },
     { id: 3, name: 'Rose Prick', brand: 'TOM FORD', price: 395, family: 'floral', category: 'perfume', concentration: 'Eau de Parfum' },
     { id: 4, name: 'Gypsy Water', brand: 'BYREDO', price: 205, family: 'fresh', category: 'perfume', concentration: 'Eau de Parfum' },
     { id: 5, name: 'Angels\' Share', brand: 'KILIAN', price: 230, family: 'gourmand', category: 'perfume', concentration: 'Eau de Parfum' },

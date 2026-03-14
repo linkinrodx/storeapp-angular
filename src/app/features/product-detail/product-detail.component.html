@@ -1,80 +1,98 @@
-<div class="product-page container flex-col">
-      <!-- Breadcrumb -->
-      <nav class="breadcrumb text-sm text-tertiary">
-        <a href="/">{{ i18n.productDetail.breadcrumb[0] }}</a> / <a href="/tienda">{{ i18n.productDetail.breadcrumb[1] }}</a> / <span>Santal 33</span>
-      </nav>
+  @if (product) {
+    <div class="product-page container flex-col">
+          <!-- Breadcrumb -->
+          <nav class="breadcrumb text-sm text-tertiary">
+            <a routerLink="/">{{ i18n.productDetail.breadcrumb[0] }}</a> / <a routerLink="/tienda">{{ i18n.productDetail.breadcrumb[1] }}</a> / <span>{{ product.name }}</span>
+          </nav>
+    
+          <div class="product-layout">
+            <!-- Gallery -->
+            <div class="gallery">
+              <div class="main-image shadow-sm">
+                 @if (product.imageUrl && product.imageUrl.length > 0) {
+                   <img [src]="product.imageUrl[0]" [alt]="product.name" class="main-prod-img">
+                 } @else {
+                   <div class="img-placeholder"></div>
+                 }
+              </div>
+              <div class="thumbnails">
+                 <div class="thumb active">
+                    @if (product.imageUrl && product.imageUrl.length > 0) {
+                      <img [src]="product.imageUrl[0]" alt="thumb" class="thumb-img">
+                    }
+                 </div>
+                 <div class="thumb"></div>
+                 <div class="thumb"></div>
+              </div>
+            </div>
+    
+            <!-- Info -->
+            <div class="product-info flex-col">
+              <h2 class="label font-dm-sans brand">{{ product.brand }}</h2>
+              <h1 class="font-editorial text-4xl">{{ product.name }}</h1>
+              <div class="concentration-badge self-start text-sm">{{ product.concentration }}</div>
+              
+              <p class="price font-dm-sans text-2xl">{{ product.price | currency:i18n.global.currency:'symbol':'1.0-2' }}</p>
+    
+              <p class="description text-secondary text-sm">
+                {{ i18n.footer.brandSubtitle }}
+              </p>
 
-      <div class="product-layout">
-        <!-- Gallery -->
-        <div class="gallery">
-          <div class="main-image">
-             <!-- Placeholder -->
-          </div>
-          <div class="thumbnails">
-             <div class="thumb active"></div>
-             <div class="thumb"></div>
-             <div class="thumb"></div>
+              <div class="sizes">
+                 <h4 class="label">{{ i18n.productDetail.size }}</h4>
+                 <div class="size-options flex gap-4">
+                   <button class="size-btn">50 ml</button>
+                   <button class="size-btn active">100 ml</button>
+                 </div>
+              </div>
+    
+              <div class="actions flex gap-4">
+                 <button class="btn btn-primary w-full shadow-elevation">{{ i18n.productDetail.addToCart }}</button>
+                 <button class="btn btn-secondary icon-btn">♡</button>
+              </div>
+    
+              <!-- Pyramid Accordion (Mocked as open) -->
+              <div class="pyramid-section">
+                 <div class="pyramid-header flex justify-between items-center cursor-pointer">
+                    <h4 class="font-editorial text-xl">{{ i18n.productDetail.notes.title }}</h4>
+                    <span>−</span>
+                 </div>
+                 
+                 <div class="pyramid-content">
+                    <div class="pyramid-visual" aria-hidden="true">
+                       <!-- Visual CSS Pyramid -->
+                       <div class="triangle">
+                          <div class="level top-note color-fresh"></div>
+                          <div class="level heart-note color-floral"></div>
+                          <div class="level base-note color-wood"></div>
+                       </div>
+                    </div>
+                    
+                    <div class="notes-list flex-col gap-4">
+                      <div class="note-group">
+                        <span class="label text-tertiary">Notas de salida</span>
+                        <p class="text-sm">Cardamomo, Iris, Violeta</p>
+                      </div>
+                      <div class="note-group">
+                        <span class="label text-tertiary">Notas de corazón</span>
+                        <p class="text-sm">Papiro, Madera de sándalo australiano</p>
+                      </div>
+                      <div class="note-group">
+                        <span class="label text-tertiary">Notas de fondo</span>
+                        <p class="text-sm">Madera de cedro, Cuero, Almizcle</p>
+                      </div>
+                    </div>
+                 </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <!-- Info -->
-        <div class="product-info flex-col">
-          <h2 class="label font-dm-sans brand">LE LABO</h2>
-          <h1 class="font-editorial text-4xl">Santal 33</h1>
-          <div class="concentration-badge self-start text-sm">Eau de Parfum</div>
-          
-          <p class="price font-dm-sans text-2xl">280,00 €</p>
-
-          <p class="description text-secondary text-sm">
-            Imagina estar sentado a solas en la amplia y agreste llanura del Oeste americano, con la luz del fuego dándote en la cara, y el cielo nocturno y añil sobre tu cabeza. No hay nada alrededor excepto el suave viento del desierto. Esta fragancia captura la esencia misma de ese mito universal.
-          </p>
-
-          <div class="sizes">
-             <h4 class="label">{{ i18n.productDetail.size }}</h4>
-             <div class="size-options flex gap-4">
-               <button class="size-btn">50 ml</button>
-               <button class="size-btn active">100 ml</button>
-             </div>
-          </div>
-
-          <div class="actions flex gap-4">
-             <button class="btn btn-primary w-full shadow-elevation">{{ i18n.productDetail.addToCart }}</button>
-             <button class="btn btn-secondary icon-btn">♡</button>
-          </div>
-
-          <!-- Pyramid Accordion (Mocked as open) -->
-          <div class="pyramid-section">
-             <div class="pyramid-header flex justify-between items-center cursor-pointer">
-                <h4 class="font-editorial text-xl">{{ i18n.productDetail.notes.title }}</h4>
-                <span>−</span>
-             </div>
-             
-             <div class="pyramid-content">
-                <div class="pyramid-visual" aria-hidden="true">
-                   <!-- Visual CSS Pyramid -->
-                   <div class="triangle">
-                      <div class="level top-note color-fresh"></div>
-                      <div class="level heart-note color-floral"></div>
-                      <div class="level base-note color-wood"></div>
-                   </div>
-                </div>
-                
-                <div class="notes-list flex-col gap-4">
-                  <div class="note-group">
-                    <span class="label text-tertiary">Notas de salida</span>
-                    <p class="text-sm">Cardamomo, Iris, Violeta</p>
-                  </div>
-                  <div class="note-group">
-                    <span class="label text-tertiary">Notas de corazón</span>
-                    <p class="text-sm">Papiro, Madera de sándalo australiano</p>
-                  </div>
-                  <div class="note-group">
-                    <span class="label text-tertiary">Notas de fondo</span>
-                    <p class="text-sm">Madera de cedro, Cuero, Almizcle</p>
-                  </div>
-                </div>
-             </div>
-          </div>
-        </div>
+  } @else {
+    <div class="not-found-container container flex-col items-center justify-center py-20">
+      <div class="editorial-box bg-surface-1 text-center shadow-elevation p-12 border border-soft">
+        <h2 class="font-editorial text-4xl mb-4">{{ i18n.productDetail.notFound.title }}</h2>
+        <p class="text-secondary mb-8">{{ i18n.productDetail.notFound.message }}</p>
+        <button class="btn btn-primary" routerLink="/tienda">{{ i18n.productDetail.notFound.cta }}</button>
       </div>
     </div>
+  }

@@ -56,18 +56,21 @@
         <!-- Product Grid -->
         <main class="product-grid">
           @for(product of products; track product.id) {
-            <article class="product-card" [class]="'ribbon-' + product.family" routerLink="/producto">
+            <article class="product-card" [class]="'ribbon-' + product.family" [routerLink]="['/producto', product.id]">
               <div class="card-ribbon"></div>
               <div class="image-area">
-                 <!-- Placeholder image area, warm tone -->
-                 <div class="img-placeholder"></div>
+                 @if (product.imageUrl && product.imageUrl.length > 0) {
+                   <img [src]="product.imageUrl[0]" [alt]="product.name" class="product-img">
+                 } @else {
+                   <div class="img-placeholder"></div>
+                 }
                  <button class="wishlist-btn" [attr.aria-label]="i18n.navbar.actions.wishlist" (click)="$event.stopPropagation()">♡</button>
               </div>
               <div class="info-area">
                 <span class="brand label">{{ product.brand }}</span>
                 <h4 class="name text-primary">{{ product.name }}</h4>
                 <p class="text-tertiary" style="margin-top: -4px;">{{ product.concentration }}</p>
-                <p class="price">{{ product.price | currency:'EUR':'symbol':'1.0-0' }}</p>
+                <p class="price">{{ product.price | currency:i18n.global.currency:'symbol':'1.0-0' }}</p>
               </div>
             </article>
           }
