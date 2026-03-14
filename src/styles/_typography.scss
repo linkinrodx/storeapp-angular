@@ -1,0 +1,48 @@
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/500.css";
+@import "@fontsource/dm-sans/700.css";
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--velvet);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, .font-editorial {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  color: var(--velvet);
+  line-height: 1.2;
+}
+
+/* Typography Hierarchy */
+
+/* Primary - Default Text */
+.text-primary {
+  color: var(--velvet);
+}
+
+/* Secondary - Supporting Text */
+.text-secondary {
+  color: var(--mist);
+}
+
+/* Tertiary - Metadata */
+.text-tertiary {
+  color: var(--mist);
+  opacity: 0.8;
+  font-size: 0.875rem;
+}
+
+/* Labels */
+label, .label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--mist);
+}

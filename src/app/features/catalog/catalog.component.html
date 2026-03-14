@@ -1,0 +1,76 @@
+<div class="catalog-page container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb text-sm text-tertiary">
+        <a routerLink="/">{{ i18n.catalog.breadcrumb }}</a> / <span>{{ i18n.catalog.breadcrumbCurrent }}</span>
+      </nav>
+
+      <div class="catalog-header flex justify-between items-center">
+        <h2 class="font-editorial text-4xl">{{ i18n.catalog.title }}</h2>
+        <div class="sort-controls flex items-center gap-4">
+          <span class="text-secondary text-sm">{{ products.length }} {{ i18n.catalog.resultsTarget }}</span>
+          <select class="sort-select border border-soft p-2">
+            @for(opt of i18n.catalog.sortOptions; track opt) {
+              <option>{{ opt }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div class="catalog-layout">
+        <!-- Sidebar Filters -->
+        <aside class="sidebar-filters">
+          <div class="filter-group">
+            <h4 class="label">{{ i18n.catalog.filters.category }}</h4>
+            <div class="filter-options">
+               @for(cat of categories; track cat.id) {
+                 <label class="checkbox-label">
+                    <input type="checkbox"> 
+                    <span class="text-secondary">{{ cat.label }}</span>
+                 </label>
+               }
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4 class="label">{{ i18n.catalog.filters.family }}</h4>
+            <div class="filter-options">
+               @for(fam of families; track fam.id) {
+                 <label class="checkbox-label">
+                    <input type="checkbox"> 
+                    <span class="text-secondary">{{ fam.label }}</span>
+                 </label>
+               }
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <h4 class="label">{{ i18n.catalog.filters.price }}</h4>
+            <div class="price-inputs flex items-center gap-2">
+               <input type="text" [placeholder]="i18n.catalog.filters.minPrice" class="price-input">
+               <span>-</span>
+               <input type="text" [placeholder]="i18n.catalog.filters.maxPrice" class="price-input">
+            </div>
+          </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <main class="product-grid">
+          @for(product of products; track product.id) {
+            <article class="product-card" [class]="'ribbon-' + product.family" routerLink="/producto">
+              <div class="card-ribbon"></div>
+              <div class="image-area">
+                 <!-- Placeholder image area, warm tone -->
+                 <div class="img-placeholder"></div>
+                 <button class="wishlist-btn" [attr.aria-label]="i18n.navbar.actions.wishlist" (click)="$event.stopPropagation()">♡</button>
+              </div>
+              <div class="info-area">
+                <span class="brand label">{{ product.brand }}</span>
+                <h4 class="name text-primary">{{ product.name }}</h4>
+                <p class="text-tertiary" style="margin-top: -4px;">{{ product.concentration }}</p>
+                <p class="price">{{ product.price | currency:'EUR':'symbol':'1.0-0' }}</p>
+              </div>
+            </article>
+          }
+        </main>
+      </div>
+    </div>

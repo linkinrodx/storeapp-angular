@@ -1,0 +1,59 @@
+<div class="checkout-page container">
+       <h1 class="font-editorial text-4xl mb-8">{{ i18n.checkout.title }}</h1>
+       
+       <div class="checkout-layout">
+          <div class="checkout-steps flex-col gap-8">
+             <!-- Step 1 -->
+             <div class="step-card bg-surface-1 shadow-elevation active-step">
+                <div class="step-header">
+                   <h3 class="font-editorial text-2xl">{{ i18n.checkout.steps.personal }}</h3>
+                </div>
+                <div class="step-content">
+                   <div class="form-grid">
+                      <div class="input-group">
+                         <label>{{ i18n.checkout.form.email }}</label>
+                         <input type="email" value="cliente@exclusivo.com">
+                      </div>
+                      <div class="input-group">
+                         <label>{{ i18n.checkout.form.phone }}</label>
+                         <input type="tel">
+                      </div>
+                   </div>
+                   <button class="btn btn-primary mt-4">{{ i18n.checkout.form.continueBtn }}</button>
+                </div>
+             </div>
+             
+             <!-- Step 2 (Closed) -->
+             <div class="step-card bg-surface-0 border-soft inactive">
+                <div class="step-header flex justify-between items-center text-mist">
+                   <h3 class="font-editorial text-xl">{{ i18n.checkout.steps.shipping }}</h3>
+                   <span>{{ i18n.checkout.steps.edit }}</span>
+                </div>
+             </div>
+             
+             <!-- Step 3 (Closed) -->
+             <div class="step-card bg-surface-0 border-soft inactive">
+                <div class="step-header flex justify-between items-center text-mist">
+                   <h3 class="font-editorial text-xl">{{ i18n.checkout.steps.payment }}</h3>
+                </div>
+             </div>
+          </div>
+          
+          <!-- Summary Sidebar -->
+          <aside class="cart-summary bg-surface-1">
+             <h3 class="font-editorial text-2xl mb-6">{{ i18n.checkout.summary.title }}</h3>
+             <div class="summary-line flex justify-between text-secondary mb-3">
+                <span>{{ i18n.checkout.summary.subtotal }} (2 items)</span>
+                <span>625,00 €</span>
+             </div>
+             <div class="summary-line flex justify-between text-secondary mb-6 pb-6 border-b">
+                <span>{{ i18n.checkout.summary.shipping }}</span>
+                <span>{{ i18n.checkout.summary.shippingCalculated }}</span>
+             </div>
+             <div class="summary-line total flex justify-between font-medium text-lg mb-8">
+                <span>{{ i18n.checkout.summary.total }}</span>
+                <span>625,00 €</span>
+             </div>
+          </aside>
+       </div>
+    </div>

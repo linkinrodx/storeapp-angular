@@ -1,0 +1,58 @@
+<div class="home-page">
+      <!-- Minimal Hero Banner -->
+      <section class="hero shadow-elevation">
+        <div class="hero-content">
+          <p class="subtitle text-tertiary">{{ i18n.home.hero.subtitle }}</p>
+          <h2 class="font-editorial hero-title" [innerHTML]="i18n.home.hero.title"></h2>
+          <button class="btn btn-primary cta" routerLink="/tienda">{{ i18n.home.hero.cta }}</button>
+        </div>
+      </section>
+
+      <!-- Category Pills -->
+      <section class="container categories-pills">
+        <div class="pill">{{ i18n.footer.shop.links[0] }}</div>
+        <div class="pill">{{ i18n.footer.shop.links[1] }}</div>
+        <div class="pill">{{ i18n.footer.shop.links[3] }}</div>
+        <div class="pill">{{ i18n.footer.shop.links[5] }}</div>
+        <div class="pill">{{ i18n.footer.shop.links[6] }}</div>
+        <div class="pill">{{ i18n.footer.shop.links[7] }}</div>
+      </section>
+
+      <!-- New Arrivals (Horizontal Roll) -->
+      <section class="container new-arrivals">
+        <div class="section-header flex justify-between items-center">
+          <h3 class="font-editorial text-2xl">{{ i18n.home.newArrivals.title }}</h3>
+          <a routerLink="/tienda" class="view-all text-secondary">{{ i18n.home.newArrivals.viewAll }}</a>
+        </div>
+        
+        <div class="product-strip">
+          <!-- Mock Product Cards -->
+          @for(product of products; track product.id) {
+            <article class="product-card" [class]="'ribbon-' + product.family">
+              <div class="card-ribbon"></div>
+              <div class="image-area">
+                 <!-- Placeholder image area, warm tone -->
+                 <div class="img-placeholder"></div>
+                 <button class="wishlist-btn" [attr.aria-label]="i18n.navbar.actions.wishlist">♡</button>
+              </div>
+              <div class="info-area">
+                <span class="brand label">{{ product.brand }}</span>
+                <h4 class="name text-primary">{{ product.name }}</h4>
+                <p class="price">{{ product.price | currency:'EUR':'symbol':'1.0-0' }}</p>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+      
+      <!-- Brand Spotlight -->
+      <section class="container spotlight">
+         <div class="brand-panel bg-surface-1">
+             <div class="spotlight-content">
+                <h3 class="font-editorial text-3xl">{{ i18n.home.spotlight.title }}</h3>
+                <p class="text-secondary text-sm">{{ i18n.home.spotlight.description }}</p>
+                <button class="btn btn-secondary mt-6">{{ i18n.home.spotlight.cta }}</button>
+             </div>
+         </div>
+      </section>
+    </div>

@@ -1,0 +1,50 @@
+.mb-8 { margin-bottom: 2rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .text-3xl { font-size: 2.25rem; }
+    
+    .auth-page {
+       min-height: 80vh;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       background-color: var(--surface-0);
+       padding: 4rem 1.5rem;
+    }
+    
+    .auth-form-container {
+       width: 100%;
+       max-width: 480px;
+       margin: 0 auto;
+       padding: 3.5rem;
+       border-radius: 4px;
+       border: 1px solid var(--border-soft);
+       box-shadow: var(--shadow-sm);
+    }
+    
+    .input-group {
+       label { color: var(--mist); font-size: 0.85rem; }
+       
+       input[type="email"], input[type="password"] {
+          padding: 0.875rem 1rem;
+          background: var(--surface-0);
+          border: 1px solid var(--border-soft);
+          border-radius: 4px;
+          transition: all 0.2s;
+          color: var(--velvet);
+          font-family: inherit;
+          
+          &:focus {
+             outline: none;
+             border-color: var(--flacon);
+             background: var(--surface-1);
+             box-shadow: 0 0 0 2px rgba(200,169,110,0.1);
+          }
+       }
+    }
+    
+    .checkbox input { accent-color: var(--flacon); }
+    .forgot { text-decoration: none; &:hover { color: var(--velvet); } }
+    .font-medium { font-weight: 500; }

@@ -1,0 +1,38 @@
+<footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-col brand">
+          <h2 class="font-editorial">{{ i18n.global.brand }}</h2>
+          <p class="text-secondary text-sm">{{ i18n.footer.brandSubtitle }}</p>
+        </div>
+        
+        <div class="footer-col links">
+          <label>{{ i18n.footer.shop.title }}</label>
+          @for(link of i18n.footer.shop.links; track link) {
+            <a href="#">{{ link }}</a>
+          }
+        </div>
+        
+        <div class="footer-col links">
+          <label>{{ i18n.footer.support.title }}</label>
+          @for(link of i18n.footer.support.links; track link) {
+             <a href="#">{{ link }}</a>
+          }
+        </div>
+        
+        <div class="footer-col newsletter">
+          <label>{{ i18n.footer.newsletter.title }}</label>
+          <p class="text-secondary text-sm">{{ i18n.footer.newsletter.subtitle }}</p>
+          <form class="newsletter-form">
+            <input type="email" [placeholder]="i18n.footer.newsletter.placeholder" />
+            <button type="button">→</button>
+          </form>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span class="text-tertiary">{{ i18n.footer.copyright }}</span>
+        <div class="legal-links">
+          <a href="#">{{ i18n.footer.legal.terms }}</a>
+          <a href="#">{{ i18n.footer.legal.privacy }}</a>
+        </div>
+      </div>
+    </footer>

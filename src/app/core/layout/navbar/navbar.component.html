@@ -1,0 +1,25 @@
+<header class="navbar">
+      <div class="container navbar-container">
+        <div class="navbar-left">
+          <nav class="desktop-nav">
+            <a routerLink="/tienda" class="nav-link">{{ i18n.navbar.links.perfumes }}</a>
+            <a routerLink="/tienda" class="nav-link">{{ i18n.navbar.links.newArrivals }}</a>
+            <a routerLink="/tienda" class="nav-link">{{ i18n.navbar.links.brands }}</a>
+          </nav>
+        </div>
+        
+        <div class="navbar-center" routerLink="/">
+          <h1 class="logo font-editorial">{{ i18n.global.brand }}</h1>
+        </div>
+
+        <div class="navbar-right">
+          <button class="icon-btn" [attr.aria-label]="i18n.navbar.actions.search"><lucide-icon name="search"></lucide-icon></button>
+          <button class="icon-btn" [attr.aria-label]="i18n.navbar.actions.user"><lucide-icon name="user"></lucide-icon></button>
+          <button class="icon-btn" [attr.aria-label]="i18n.navbar.actions.wishlist"><lucide-icon name="heart"></lucide-icon></button>
+          <button class="icon-btn cart-btn" [attr.aria-label]="i18n.navbar.actions.cart" routerLink="/carrito">
+            <lucide-icon name="shopping-bag"></lucide-icon>
+            <span class="cart-badge">2</span>
+          </button>
+        </div>
+      </div>
+    </header>

@@ -1,0 +1,77 @@
+<div class="cart-page container">
+      <h1 class="font-editorial text-4xl mb-8">{{ i18n.cart.title }}</h1>
+      
+      <div class="cart-layout">
+         <!-- Items List -->
+         <div class="cart-items flex-col gap-6">
+            <div class="cart-item">
+               <div class="item-img" style="background-color: var(--champagne-light);"></div>
+               <div class="item-details flex-col">
+                  <span class="brand label mb-1 text-mist">LE LABO</span>
+                  <div class="flex justify-between items-start">
+                     <h4 class="name text-primary text-xl font-editorial">Santal 33</h4>
+                     <button class="remove-btn">✕</button>
+                  </div>
+                  <span class="variant text-sm text-secondary mt-1">100 ml — Eau de Parfum</span>
+                  
+                  <div class="item-actions mt-auto flex justify-between items-end">
+                     <div class="qty-stepper flex items-center">
+                        <button class="step-btn">−</button>
+                        <span class="qty text-sm">1</span>
+                        <button class="step-btn">+</button>
+                     </div>
+                     <p class="price font-dm-sans font-medium">280,00 €</p>
+                  </div>
+               </div>
+            </div>
+            
+            <div class="cart-item">
+               <div class="item-img" style="background-color: var(--champagne-light);"></div>
+               <div class="item-details flex-col">
+                  <span class="brand label mb-1 text-mist">MAISON FRANCIS KURKDJIAN</span>
+                  <div class="flex justify-between items-start">
+                     <h4 class="name text-primary text-xl font-editorial">Baccarat Rouge 540</h4>
+                     <button class="remove-btn">✕</button>
+                  </div>
+                  <span class="variant text-sm text-secondary mt-1">70 ml — Extrait</span>
+                  
+                  <div class="item-actions mt-auto flex justify-between items-end">
+                     <div class="qty-stepper flex items-center">
+                        <button class="step-btn">−</button>
+                        <span class="qty text-sm">1</span>
+                        <button class="step-btn">+</button>
+                     </div>
+                     <p class="price font-dm-sans font-medium">345,00 €</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+         <!-- Summary -->
+         <aside class="cart-summary bg-surface-1">
+            <h3 class="font-editorial text-2xl mb-6">{{ i18n.cart.summary.title }}</h3>
+            
+            <div class="summary-line flex justify-between text-secondary mb-3">
+               <span>{{ i18n.cart.summary.subtotal }}</span>
+               <span>625,00 €</span>
+            </div>
+            
+            <div class="summary-line flex justify-between text-secondary mb-3">
+               <span>{{ i18n.cart.summary.shipping }}</span>
+               <span>{{ i18n.cart.summary.shippingFree }}</span>
+            </div>
+            
+            <div class="summary-line flex justify-between text-secondary mb-6 pb-6 border-b">
+               <span>{{ i18n.cart.summary.taxesIncluded }}</span>
+            </div>
+            
+            <div class="summary-line total flex justify-between font-medium text-lg mb-8">
+               <span>{{ i18n.cart.summary.total }}</span>
+               <span>625,00 €</span>
+            </div>
+            
+            <button class="btn btn-primary w-full shadow-elevation" routerLink="/checkout">{{ i18n.cart.summary.checkoutBtn }}</button>
+            <p class="secure-checkout text-xs text-center text-tertiary mt-4 cursor-pointer">{{ i18n.global.secureAndEncrypted }}</p>
+         </aside>
+      </div>
+    </div>

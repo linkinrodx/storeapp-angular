@@ -1,0 +1,134 @@
+.catalog-page {
+      padding-top: 2rem;
+      padding-bottom: 5rem;
+    }
+    
+    .breadcrumb {
+      margin-bottom: 2rem;
+      a { color: var(--mist); text-decoration: none; &:hover { color: var(--velvet); } }
+    }
+    
+    .catalog-header {
+      margin-bottom: 3rem;
+      .text-4xl { font-size: 3rem; }
+      .sort-select {
+        background: var(--surface-1);
+        border: 1px solid var(--border-soft);
+        border-radius: 4px;
+        color: var(--velvet);
+        cursor: pointer;
+      }
+    }
+    
+    .catalog-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 3rem;
+    }
+    
+    .filter-group {
+      margin-bottom: 2.5rem;
+      .label { margin-bottom: 1rem; }
+      
+      .filter-options {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      
+      .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        text-transform: none;
+        letter-spacing: normal;
+        font-weight: 400;
+        
+        input[type="checkbox"] {
+           accent-color: var(--flacon);
+        }
+      }
+      
+      .price-input {
+         width: 80px;
+         padding: 0.5rem;
+         background: var(--surface-1);
+         border: 1px solid var(--border-soft);
+         border-radius: 4px;
+         &:focus { border-color: var(--flacon); outline: none; }
+      }
+    }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    
+    /* Reuse Product Card Styles */
+    .product-card {
+      background: var(--surface-1);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 1px solid var(--border-soft);
+      text-decoration: none;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        background: var(--surface-2);
+      }
+      
+      .card-ribbon { height: 3px; width: 100%; background: var(--mist); }
+      &.ribbon-floral .card-ribbon { background: var(--ribbon-floral); }
+      &.ribbon-wood .card-ribbon { background: var(--ribbon-wood); }
+      &.ribbon-oriental .card-ribbon { background: var(--ribbon-oriental); }
+      &.ribbon-fresh .card-ribbon { background: var(--ribbon-fresh); }
+      &.ribbon-gourmand .card-ribbon { background: var(--ribbon-gourmand); }
+
+      .image-area {
+        position: relative;
+        padding: 2rem;
+        background-color: var(--champagne-light);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid var(--border-soft);
+        
+        .img-placeholder {
+          width: 140px;
+          height: 180px;
+          background-color: var(--surface-2);
+          border-radius: 2px;
+          box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+        
+        .wishlist-btn {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          font-size: 1.25rem;
+          color: var(--mist);
+          transition: color 0.2s;
+          &:hover { color: var(--flacon); }
+        }
+      }
+
+      .info-area {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        
+        .brand { color: var(--mist); }
+        .name { margin: 0; font-size: 1.1rem; line-height: 1.4; color: var(--velvet); }
+        .price { margin-top: auto; font-family: 'DM Sans', sans-serif; font-weight: 500; color: var(--velvet); }
+      }
+    }

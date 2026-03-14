@@ -1,0 +1,33 @@
+<div class="auth-page">
+       <div class="auth-layout container">
+          <div class="auth-form-container bg-surface-1 shadow-elevation">
+             <h2 class="font-editorial text-3xl mb-8 text-center">{{ i18n.auth.title }}</h2>
+             <p class="text-secondary text-center mb-6">{{ i18n.auth.subtitle }}</p>
+             
+             <form class="auth-form flex-col gap-6">
+                <div class="input-group flex-col gap-2">
+                   <label>{{ i18n.auth.form.email }}</label>
+                   <input type="email" [placeholder]="i18n.auth.form.emailPlaceholder">
+                </div>
+                
+                <div class="input-group flex-col gap-2">
+                   <div class="flex justify-between">
+                      <label>{{ i18n.auth.form.password }}</label>
+                      <a href="#" class="forgot text-secondary text-sm">{{ i18n.auth.form.forgotPassword }}</a>
+                   </div>
+                   <input type="password" [placeholder]="i18n.auth.form.passwordPlaceholder">
+                </div>
+                
+                <label class="checkbox flex items-center gap-2 mt-2 cursor-pointer">
+                   <input type="checkbox">
+                   <span class="text-secondary text-sm">{{ i18n.auth.form.rememberMe }}</span>
+                </label>
+                
+                <button type="button" class="btn btn-primary w-full shadow-elevation mt-4" routerLink="/">{{ i18n.auth.form.loginBtn }}</button>
+                <div class="text-center mt-6">
+                   <span class="text-secondary text-sm">{{ i18n.auth.form.noAccount }} <a href="#" class="text-mist font-medium">{{ i18n.auth.form.createAccount }}</a></span>
+                </div>
+             </form>
+          </div>
+       </div>
+    </div>

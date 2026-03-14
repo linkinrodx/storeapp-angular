@@ -1,0 +1,46 @@
+:root {
+  /* Layout Base */
+  --spacing-base: 4px;
+  
+  /* Palette - Luxury Perfumery Domain */
+  --champagne: #F5EFE0;
+  --champagne-light: #FDFBF7;
+  --flacon: #C8A96E;
+  --flacon-deep: #8B6914;
+  --velvet: #2B1B17;
+  --mist: #7A6E65;
+  --petal: #EDD5C8;
+  
+  /* Surface Layers */
+  --surface-0: #FAF7F2;      /* Page canvas */
+  --surface-1: #F5EFE0;      /* Card resting surface */
+  --surface-2: #EDE5D2;      /* Elevated card / hover */
+  
+  /* Controls & Tokens */
+  --control-bg: var(--surface-1);
+  --control-border: rgba(43,27,23,0.15);
+  --control-hover: rgba(43,27,23,0.05);
+
+  /* Borders / Depth (Layered warm shadows instead of harsh borders) */
+  --border-soft: rgba(43,27,23,0.05);
+  --border: rgba(43,27,23,0.10);
+  --border-emphasis: rgba(43,27,23,0.20);
+  
+  --shadow-sm: 0 2px 4px rgba(43,27,23,0.02);
+  --shadow-md: 0 4px 12px rgba(43,27,23,0.04);
+  --shadow-lg: 0 12px 24px rgba(43,27,23,0.06);
+
+  /* Ribbons (Signature scent families) */
+  --ribbon-floral: linear-gradient(90deg, #F3C4CB, #E69A8D);
+  --ribbon-wood: linear-gradient(90deg, #B29B8A, #8F7661);
+  --ribbon-oriental: linear-gradient(90deg, #D4A373, #A56D3B);
+  --ribbon-fresh: linear-gradient(90deg, #A8DADC, #457B9D);
+  --ribbon-gourmand: linear-gradient(90deg, #E6C287, #C69F5A);
+}
+
+/* Base Spacing utilities */
+.p-4  { padding: calc(var(--spacing-base) * 4); }
+.p-6  { padding: calc(var(--spacing-base) * 6); }
+.m-4  { margin: calc(var(--spacing-base) * 4); }
+.gap-4 { gap: calc(var(--spacing-base) * 4); }
+.gap-6 { gap: calc(var(--spacing-base) * 6); }
