@@ -70,7 +70,7 @@
                 <span class="brand label">{{ product.brand }}</span>
                 <h4 class="name text-primary">{{ product.name }}</h4>
                 <p class="text-tertiary" style="margin-top: -4px;">{{ product.concentration }}</p>
-                <p class="price">{{ product.price | currency:i18n.global.currency:'symbol':'1.0-0' }}</p>
+                <p class="price">{{ product.price | currency:i18n.global.currency:i18n.global.currencySymbol:'1.0-0' }}</p>
               </div>
             </article>
           }

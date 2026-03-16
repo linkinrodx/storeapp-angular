@@ -1,61 +1,182 @@
 <div class="home-page">
-      <!-- Minimal Hero Banner -->
-      <section class="hero shadow-elevation">
-        <div class="hero-content">
-          <p class="subtitle text-tertiary">{{ i18n.home.hero.subtitle }}</p>
-          <h2 class="font-editorial hero-title" [innerHTML]="i18n.home.hero.title"></h2>
-          <button class="btn btn-primary cta" routerLink="/tienda">{{ i18n.home.hero.cta }}</button>
-        </div>
-      </section>
+  <!-- Minimal Hero Banner -->
+  <section class="hero shadow-elevation">
+    <div class="hero-content">
+      <p class="subtitle text-tertiary">{{ i18n.home.hero.subtitle }}</p>
+      <h2 class="font-editorial hero-title" [innerHTML]="i18n.home.hero.title"></h2>
+      <div class="hero-cta-group">
+        <button class="btn btn-primary cta" routerLink="/tienda">{{ i18n.home.hero.cta }}</button>
+        <button class="btn btn-link">{{ i18n.home.spotlight.cta }} ↓</button>
+      </div>
+    </div>
+  </section>
 
-      <!-- Category Pills -->
-      <section class="container categories-pills">
-        <div class="pill">{{ i18n.footer.shop.links[0] }}</div>
-        <div class="pill">{{ i18n.footer.shop.links[1] }}</div>
-        <div class="pill">{{ i18n.footer.shop.links[3] }}</div>
-        <div class="pill">{{ i18n.footer.shop.links[5] }}</div>
-        <div class="pill">{{ i18n.footer.shop.links[6] }}</div>
-        <div class="pill">{{ i18n.footer.shop.links[7] }}</div>
-      </section>
+  <!-- Category Pills -->
+  <section class="container categories-container">
+    <div class="title-group">
+      <h2 class="font-editorial text-6xl">{{ i18n.categories.title }}</h2>
+      <div class="title-accent"></div>
+    </div>
+    <div class="categories-pills">
+      <div class="pill"><span class="pill-dot"></span>{{ i18n.footer.shop.links[0] }}</div>
+      <div class="pill"><span class="pill-dot"></span>{{ i18n.footer.shop.links[1] }}</div>
+      <div class="pill"><span class="pill-dot"></span>{{ i18n.footer.shop.links[3] }}</div>
+      <div class="pill"><span class="pill-dot"></span>{{ i18n.footer.shop.links[5] }}</div>
+      <div class="pill"><span class="pill-dot"></span>{{ i18n.footer.shop.links[6] }}</div>
+      <div class="pill"><span class="pill-dot"></span>{{ i18n.footer.shop.links[7] }}</div>
+    </div>
+  </section>
 
-      <!-- New Arrivals (Horizontal Roll) -->
-      <section class="container new-arrivals">
-        <div class="section-header flex justify-between items-center">
-          <h3 class="font-editorial text-2xl">{{ i18n.home.newArrivals.title }}</h3>
-          <a routerLink="/tienda" class="view-all text-secondary">{{ i18n.home.newArrivals.viewAll }}</a>
-        </div>
-        
-        <div class="product-strip">
-          <!-- Mock Product Cards -->
+  <!-- New Arrivals (Atelier Gallery) -->
+  <section class="container new-arrivals">
+    <div class="flex justify-between items-end mb-12">
+      <div class="title-group">
+        <h2 class="font-editorial text-6xl">{{ i18n.home.newArrivals.title }}</h2>
+        <div class="title-accent"></div>
+      </div>
+      <a routerLink="/tienda" class="view-all-link">
+        <span>{{ i18n.home.newArrivals.viewAll }}</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="gallery-viewport">
+      <div class="marquee-wrapper">
+        <!-- Unique Marquee Content (Rendered twice for loop) -->
+        <div class="marquee-content">
           @for(product of products; track product.id) {
-            <article class="product-card" [class]="'ribbon-' + product.family" [routerLink]="['/producto', product.id]">
-              <div class="card-ribbon"></div>
-              <div class="image-area">
-                 @if (product.imageUrl && product.imageUrl.length > 0) {
-                   <img [src]="product.imageUrl[0]" [alt]="product.name" class="product-img">
-                 } @else {
-                   <div class="img-placeholder"></div>
-                 }
-                 <button class="wishlist-btn" [attr.aria-label]="i18n.navbar.actions.wishlist">♡</button>
+          <article class="gallery-card" [routerLink]="['/producto', product.id]">
+            <div class="card-visual">
+              <div class="visual-inner">
+                @if (product.imageUrl && product.imageUrl.length > 0) {
+                <img [src]="product.imageUrl[0]" [alt]="product.name" class="product-image">
+                } @else {
+                <div class="image-placeholder"></div>
+                }
+                <div class="card-actions">
+                  <button class="wishlist-action" (click)="$event.stopPropagation();"
+                    [attr.aria-label]="i18n.navbar.actions.wishlist">♡</button>
+                </div>
               </div>
-              <div class="info-area">
-                <span class="brand label">{{ product.brand }}</span>
-                <h4 class="name text-primary">{{ product.name }}</h4>
-                <p class="price">{{ product.price | currency:i18n.global.currency:'symbol':'1.0-0' }}</p>
-              </div>
-            </article>
+            </div>
+            <div class="card-manuscript">
+              <span class="brand-tag">{{ product.brand }}</span>
+              <h4 class="product-name">{{ product.name }}</h4>
+              <p class="product-price">{{ product.price | currency:i18n.global.currency:i18n.global.currencySymbol:'1.0-0' }}</p>
+            </div>
+          </article>
           }
         </div>
-      </section>
-      
-      <!-- Brand Spotlight -->
-      <section class="container spotlight">
-         <div class="brand-panel bg-surface-1">
-             <div class="spotlight-content">
-                <h3 class="font-editorial text-3xl">{{ i18n.home.spotlight.title }}</h3>
-                <p class="text-secondary text-sm">{{ i18n.home.spotlight.description }}</p>
-                <button class="btn btn-secondary mt-6">{{ i18n.home.spotlight.cta }}</button>
-             </div>
-         </div>
-      </section>
+
+        <!-- Duplicate for Seamless Infinite Loop -->
+        <div class="marquee-content" aria-hidden="true">
+          @for(product of products; track product.id) {
+          <article class="gallery-card" [routerLink]="['/producto', product.id]">
+            <div class="card-visual">
+              <div class="visual-inner">
+                @if (product.imageUrl && product.imageUrl.length > 0) {
+                <img [src]="product.imageUrl[0]" [alt]="product.name" class="product-image">
+                } @else {
+                <div class="image-placeholder"></div>
+                }
+                <div class="card-actions">
+                  <button class="wishlist-action" (click)="$event.stopPropagation();"
+                    [attr.aria-label]="i18n.navbar.actions.wishlist">♡</button>
+                </div>
+              </div>
+            </div>
+            <div class="card-manuscript">
+              <span class="brand-tag">{{ product.brand }}</span>
+              <h4 class="product-name">{{ product.name }}</h4>
+              <p class="product-price">{{ product.price | currency:i18n.global.currency:i18n.global.currencySymbol:'1.0-0' }}</p>
+            </div>
+          </article>
+          }
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- Brand Spotlight -->
+  <!-- <section class="container spotlight">
+    <div class="brand-panel bg-surface-1">
+      <div class="spotlight-content">
+        <h3 class="font-editorial text-5xl">{{ i18n.home.spotlight.title }}</h3>
+        <p class="text-secondary text-lg">{{ i18n.home.spotlight.description }}</p>
+        <button class="btn btn-secondary mt-8">{{ i18n.home.spotlight.cta }}</button>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Store Location - Premium Boutique Feel -->
+  <section class="location-section py-20 bg-surface-0">
+    <div class="container location-container">
+      <div class="title-group">
+        <h2 class="font-editorial text-6xl">{{ i18n.home.location.sectionTitle }}</h2>
+        <div class="title-accent"></div>
+      </div>
+    </div>
+    <div class="container container-lg">
+      <div class="location-showcase">
+        <!-- Visual Sidebar (The Journey) -->
+        <div class="location-visual shadow-elevation">
+          <img
+            src="https://res.cloudinary.com/dg7zm6lwk/image/upload/v1773523590/store_location_map_luxury_1773523409177_cxkrhs.png"
+            alt="Store Location Artistic Map">
+          <div class="visual-deco">
+            <span class="location-tag">TACNA, PERÚ</span>
+          </div>
+        </div>
+
+        <!-- Content Area (The Invitation) -->
+        <div class="location-content">
+          <div class="content-pioneer">
+            <span class="over-label">{{ i18n.global.brand }}</span>
+            <h2 class="font-editorial text-6xl mb-4">{{ i18n.home.location.title }}</h2>
+            <p class="text-secondary text-lg mb-10">{{ i18n.home.location.subtitle }}</p>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-block">
+              <div class="block-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div class="block-text">
+                <label>Dirección</label>
+                <p>{{ i18n.home.location.address }}</p>
+              </div>
+            </div>
+
+            <div class="info-block">
+              <div class="block-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              </div>
+              <div class="block-text">
+                <label>Atención</label>
+                <p>{{ i18n.home.location.schedule }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-area mt-12">
+            <a href="https://maps.app.goo.gl/fyyY7QhQ3ULf7HKh8" target="_blank"
+              class="btn btn-outline-velvet interactive-button">
+              <span>{{ i18n.home.location.mapCta }}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

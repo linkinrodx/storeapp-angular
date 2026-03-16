@@ -5,6 +5,9 @@ export const i18n = {
     currency: 'PEN',
     currencySymbol: 'S/'
   },
+  categories: {
+    title: "Categorías"
+  },
   navbar: {
     links: {
       perfumes: 'Perfumes',
@@ -43,8 +46,8 @@ export const i18n = {
       ]
     },
     newsletter: {
-      title: 'Únete al Círculo',
-      subtitle: 'Acceso anticipado a lanzamientos y eventos exclusivos.',
+      title: 'Mantente Informado',
+      subtitle: 'Recibe las últimas novedades de la perfumería.',
       placeholder: 'Tu correo electrónico'
     },
     copyright: '© 2026 Marcas Internacionales Perfumería. Todos los derechos reservados.',
@@ -67,6 +70,14 @@ export const i18n = {
       title: 'Atelier Exclusivo',
       description: 'Descubre las notas secretas detrás de las creaciones más aclamadas de la perfumería contemporánea.',
       cta: 'Conozca la historia'
+    },
+    location: {
+      sectionTitle: 'Ubicación',
+      title: 'Nuestra Tienda Física',
+      subtitle: 'Visítanos y experimenta la esencia en persona.',
+      address: 'Av. Cnel. Mendoza 1918, Tacna 23001, Perú',
+      schedule: 'Lunes a Sábado: 9:00 AM - 8:00 PM',
+      mapCta: 'Ver en Google Maps'
     }
   },
   catalog: {

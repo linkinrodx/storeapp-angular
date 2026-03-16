@@ -12,5 +12,5 @@ import { PRODUCTS } from '../../shared/data/products';
 })
 export class HomeComponent {
   i18n = i18n;
-  products = PRODUCTS.slice(0, 5); // Just show the top 5 in home
+  products = PRODUCTS; // Show all products in the marquee
 }

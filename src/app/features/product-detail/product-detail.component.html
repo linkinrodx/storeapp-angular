@@ -32,7 +32,7 @@
               <h1 class="font-editorial text-4xl">{{ product.name }}</h1>
               <div class="concentration-badge self-start text-sm">{{ product.concentration }}</div>
               
-              <p class="price font-dm-sans text-2xl">{{ product.price | currency:i18n.global.currency:'symbol':'1.0-2' }}</p>
+              <p class="price font-dm-sans text-2xl">{{ product.price | currency:i18n.global.currency:i18n.global.currencySymbol:'1.0-0' }}</p>
     
               <p class="description text-secondary text-sm">
                 {{ i18n.footer.brandSubtitle }}
