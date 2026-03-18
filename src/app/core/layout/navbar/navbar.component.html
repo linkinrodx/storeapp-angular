@@ -1,25 +1,69 @@
-<header class="navbar">
-      <div class="container navbar-container">
-        <div class="navbar-left">
-          <nav class="desktop-nav">
-            <a routerLink="/tienda" class="nav-link">{{ i18n.navbar.links.perfumes }}</a>
-            <a routerLink="/tienda" class="nav-link">{{ i18n.navbar.links.newArrivals }}</a>
-            <a routerLink="/tienda" class="nav-link">{{ i18n.navbar.links.brands }}</a>
-          </nav>
-        </div>
-        
-        <div class="navbar-center" routerLink="/">
-          <h1 class="logo font-editorial">{{ i18n.global.brand }}</h1>
-        </div>
+<header class="navbar" [class.menu-open]="isMenuOpen">
+  <div class="container navbar-container">
+    <div class="navbar-left">
+      <!-- Hamburger Icon for Mobile -->
+      <button class="icon-btn visible-mobile hamburger" (click)="toggleMenu()" [attr.aria-label]="'Menu'">
+        <lucide-icon [name]="isMenuOpen ? 'x' : 'menu'"></lucide-icon>
+      </button>
 
-        <div class="navbar-right">
-          <button class="icon-btn" [attr.aria-label]="i18n.navbar.actions.search"><lucide-icon name="search"></lucide-icon></button>
-          <button class="icon-btn" [attr.aria-label]="i18n.navbar.actions.user"><lucide-icon name="user"></lucide-icon></button>
-          <button class="icon-btn" [attr.aria-label]="i18n.navbar.actions.wishlist"><lucide-icon name="heart"></lucide-icon></button>
-          <button class="icon-btn cart-btn" [attr.aria-label]="i18n.navbar.actions.cart" routerLink="/carrito">
-            <lucide-icon name="shopping-bag"></lucide-icon>
-            <span class="cart-badge">2</span>
-          </button>
-        </div>
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav hidden-mobile">
+        <a routerLink="/tienda" class="nav-link">{{ i18n.navbar.links.perfumes }}</a>
+        <a routerLink="/tienda" class="nav-link">{{ i18n.navbar.links.newArrivals }}</a>
+        <a routerLink="/tienda" class="nav-link">{{ i18n.navbar.links.brands }}</a>
+      </nav>
+    </div>
+
+    <div class="navbar-center" routerLink="/" (click)="closeMenu()">
+      <h1 class="logo font-editorial">{{ i18n.global.brand }}</h1>
+    </div>
+
+    <div class="navbar-right">
+      <button class="icon-btn hidden-mobile" [attr.aria-label]="i18n.navbar.actions.search">
+        <lucide-icon name="search"></lucide-icon>
+      </button>
+      <button class="icon-btn hidden-mobile" [attr.aria-label]="i18n.navbar.actions.user">
+        <lucide-icon name="user"></lucide-icon>
+      </button>
+      <button class="icon-btn hidden-mobile" [attr.aria-label]="i18n.navbar.actions.wishlist">
+        <lucide-icon name="heart"></lucide-icon>
+      </button>
+      <button class="icon-btn cart-btn" [attr.aria-label]="i18n.navbar.actions.cart" routerLink="/carrito" (click)="closeMenu()">
+        <lucide-icon name="shopping-bag"></lucide-icon>
+        <span class="cart-badge">2</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" [class.active]="isMenuOpen" (click)="closeMenu()">
+    <nav class="mobile-nav" (click)="$event.stopPropagation()">
+      <div class="mobile-nav-header">
+        <h2 class="font-editorial">{{ i18n.global.brand }}</h2>
+        <button class="icon-btn" (click)="toggleMenu()">
+          <lucide-icon name="x"></lucide-icon>
+        </button>
       </div>
-    </header>
+      <div class="mobile-nav-links">
+        <a routerLink="/tienda" class="mobile-nav-link" (click)="closeMenu()">{{ i18n.navbar.links.perfumes }}</a>
+        <a routerLink="/tienda" class="mobile-nav-link" (click)="closeMenu()">{{ i18n.navbar.links.newArrivals }}</a>
+        <a routerLink="/tienda" class="mobile-nav-link" (click)="closeMenu()">{{ i18n.navbar.links.brands }}</a>
+        
+        <div class="mobile-nav-divider"></div>
+        
+        <a routerLink="/auth" class="mobile-nav-link" (click)="closeMenu()">
+          <lucide-icon name="user" size="18"></lucide-icon>
+          <span>Mi Cuenta</span>
+        </a>
+        <a routerLink="/favoritos" class="mobile-nav-link" (click)="closeMenu()">
+          <lucide-icon name="heart" size="18"></lucide-icon>
+          <span>Favoritos</span>
+        </a>
+        <a routerLink="/tienda" class="mobile-nav-link" (click)="closeMenu()">
+          <lucide-icon name="search" size="18"></lucide-icon>
+          <span>Buscar</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>

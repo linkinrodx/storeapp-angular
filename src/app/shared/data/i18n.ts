@@ -132,22 +132,67 @@ export const i18n = {
   checkout: {
     title: 'Checkout Seguro',
     steps: {
-      personal: '1. Datos Personales',
-      shipping: '2. Dirección de Envío',
-      payment: '3. Método de Pago',
-      edit: 'Editar'
+      personal: 'Datos Personales',
+      shipping: 'Dirección de Envío',
+      payment: 'Método de Pago',
+      edit: 'Editar',
+      completed: 'completado',
+      processed: 'procesado'
     },
     form: {
       email: 'Correo Electrónico',
+      emailPlaceholder: 'example@fineperfume.com',
       phone: 'Teléfono',
-      continueBtn: 'Continuar al Envío'
+      phonePlaceholder: '+51 900 000 000',
+      continueBtn: 'Continuar al Envío',
+      continueToPaymentBtn: 'Continuar al Pago'
+    },
+    shipping: {
+      title: 'Dirección de Envío',
+      address: 'Calle y Número',
+      addressPlaceholder: 'Dirección de entrega',
+      city: 'Ciudad',
+      cityPlaceholder: 'Tacna',
+      reference: 'Referencia',
+      referencePlaceholder: 'Edificio, dpto, etc.',
+      methodTitle: 'Método de envío',
+      primeExpress: 'Envío Prime Express',
+      primeExpressDesc: '24-48 horas',
+      free: 'Gratis'
+    },
+    payment: {
+      title: 'Método de Pago',
+      methodTitle: 'Método de pago',
+      card: 'Tarjeta de Crédito / Débito',
+      cardDesc: 'Pago seguro SSL',
+      cashOnDelivery: 'Pago contra entrega',
+      cashOnDeliveryDesc: 'No disponible',
+      notAvailable: 'No disponible',
+      cardName: 'Poseedor de la Tarjeta',
+      cardNamePlaceholder: 'Nombre como aparece en la tarjeta',
+      cardNumber: 'Número de Tarjeta',
+      cardNumberPlaceholder: '0000 0000 0000 0000',
+      expiry: 'Expiración',
+      expiryPlaceholder: 'MM / YY',
+      cvv: 'CVV',
+      cvvPlaceholder: '•••',
+      securePayment: 'Pago seguro SSL'
     },
     summary: {
       title: 'Resumen Pedido',
+      items: 'artículos',
       subtotal: 'Subtotal',
       shipping: 'Envío',
       shippingCalculated: 'Calculado en el siguiente paso',
-      total: 'Total Estimado'
+      total: 'Total'
+    },
+    final: {
+      submitBtn: 'Finalizar Adquisición',
+      secure: 'CHECKOUT SEGURO',
+      secureDesc: 'SSL · Datos encriptados',
+      terms: 'Términos',
+      privacy: 'Privacidad',
+      termsNotice: 'Al completar esta compra, aceptas nuestros'
     }
   },
   auth: {

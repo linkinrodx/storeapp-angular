@@ -1,59 +1,317 @@
-<div class="checkout-page container">
-       <h1 class="font-editorial text-4xl mb-8">{{ i18n.checkout.title }}</h1>
-       
-       <div class="checkout-layout">
-          <div class="checkout-steps flex-col gap-8">
-             <!-- Step 1 -->
-             <div class="step-card bg-surface-1 shadow-elevation active-step">
-                <div class="step-header">
-                   <h3 class="font-editorial text-2xl">{{ i18n.checkout.steps.personal }}</h3>
+<div class="checkout-page">
+  <div class="container">
+    <div class="checkout-grid">
+      <!-- Main Content Area -->
+      <main class="checkout-main">
+        <header class="checkout-header">
+          <span class="overline">{{ i18n.checkout.title }}</span>
+          <h1 class="font-editorial">{{ i18n.checkout.steps.personal }}</h1>
+        </header>
+
+        <div class="checkout-steps" role="navigation" aria-label="Pasos del checkout">
+          <!-- Step 1: Contact -->
+          <section class="checkout-step" [class.active]="currentStep === 1" [class.completed]="currentStep > 1" aria-labelledby="step1-label">
+            <div class="step-connector" *ngIf="currentStep > 1" aria-hidden="true"></div>
+            <div class="step-header">
+              <div class="step-indicator" aria-hidden="true">
+                <div class="step-num" [class.done]="currentStep > 1" [attr.aria-label]="currentStep > 1 ? 'Paso 1 completado' : 'Paso 1'">
+                  <span *ngIf="currentStep <= 1">1</span>
+                  <lucide-icon *ngIf="currentStep > 1" name="check" size="14" aria-hidden="true"></lucide-icon>
                 </div>
-                <div class="step-content">
-                   <div class="form-grid">
-                      <div class="input-group">
-                         <label>{{ i18n.checkout.form.email }}</label>
-                         <input type="email" value="cliente@exclusivo.com">
+              </div>
+              <div class="step-meta">
+                <span class="step-label" id="step1-label">{{ i18n.checkout.steps.personal }}</span>
+                <span class="step-status" *ngIf="currentStep > 1" aria-live="polite">{{ i18n.checkout.steps.completed }}</span>
+              </div>
+              <button *ngIf="currentStep > 1" (click)="currentStep = 1" class="edit-link" type="button">{{ i18n.checkout.steps.edit }}</button>
+            </div>
+            
+            <div class="step-content" *ngIf="currentStep === 1" role="region" aria-label="Información de contacto">
+              <form (ngSubmit)="currentStep = 2" #contactForm="ngForm">
+                <div class="form-compact">
+                  <div class="input-field">
+                    <label for="email">{{ i18n.checkout.form.email }}</label>
+                    <input 
+                      type="email" 
+                      id="email"
+                      name="email"
+                      [placeholder]="i18n.checkout.form.emailPlaceholder"
+                      autocomplete="email"
+                      inputmode="email"
+                      required
+                      aria-required="true">
+                  </div>
+                  <div class="input-field">
+                    <label for="phone">{{ i18n.checkout.form.phone }}</label>
+                    <input 
+                      type="tel" 
+                      id="phone"
+                      name="phone"
+                      [placeholder]="i18n.checkout.form.phonePlaceholder"
+                      autocomplete="tel"
+                      inputmode="tel"
+                      required
+                      aria-required="true">
+                  </div>
+                </div>
+                <button type="submit" class="btn-checkout w-fit">{{ i18n.checkout.form.continueBtn }}</button>
+              </form>
+            </div>
+          </section>
+
+          <!-- Step 2: Shipping -->
+          <section class="checkout-step" [class.active]="currentStep === 2" [class.completed]="currentStep > 2" aria-labelledby="step2-label">
+            <div class="step-connector" *ngIf="currentStep > 2" aria-hidden="true"></div>
+            <div class="step-header">
+              <div class="step-indicator" aria-hidden="true">
+                <div class="step-num" [class.done]="currentStep > 2" [attr.aria-label]="currentStep > 2 ? 'Paso 2 completado' : 'Paso 2'">
+                  <span *ngIf="currentStep <= 2">2</span>
+                  <lucide-icon *ngIf="currentStep > 2" name="check" size="14" aria-hidden="true"></lucide-icon>
+                </div>
+              </div>
+              <div class="step-meta">
+                <span class="step-label" id="step2-label">{{ i18n.checkout.steps.shipping }}</span>
+                <span class="step-status" *ngIf="currentStep > 2" aria-live="polite">{{ i18n.checkout.steps.completed }}</span>
+              </div>
+              <button *ngIf="currentStep > 2" (click)="currentStep = 2" class="edit-link" type="button">{{ i18n.checkout.steps.edit }}</button>
+            </div>
+            
+            <div class="step-content" *ngIf="currentStep === 2" role="region" aria-label="Información de envío">
+              <form (ngSubmit)="currentStep = 3" #shippingForm="ngForm">
+                <div class="form-compact">
+                  <div class="input-field full-width">
+                    <label for="address">{{ i18n.checkout.shipping.address }}</label>
+                    <input 
+                      type="text" 
+                      id="address"
+                      name="address"
+                      [placeholder]="i18n.checkout.shipping.addressPlaceholder"
+                      autocomplete="street-address"
+                      required
+                      aria-required="true">
+                  </div>
+                  <div class="input-field">
+                    <label for="city">{{ i18n.checkout.shipping.city }}</label>
+                    <input 
+                      type="text" 
+                      id="city"
+                      name="city"
+                      [placeholder]="i18n.checkout.shipping.cityPlaceholder"
+                      autocomplete="address-level2"
+                      required
+                      aria-required="true">
+                  </div>
+                  <div class="input-field">
+                    <label for="reference">{{ i18n.checkout.shipping.reference }}</label>
+                    <input 
+                      type="text" 
+                      id="reference"
+                      name="reference"
+                      [placeholder]="i18n.checkout.shipping.referencePlaceholder"
+                      autocomplete="off">
+                  </div>
+                </div>
+
+                <div class="shipping-options">
+                  <p class="section-label" id="shipping-method-label">{{ i18n.checkout.shipping.methodTitle }}</p>
+                  <label class="selection-card" [class.active]="true">
+                    <input type="radio" name="shipping" checked aria-labelledby="shipping-method-label">
+                    <div class="card-visual" aria-hidden="true">
+                      <div class="icon-box">
+                        <lucide-icon name="truck" size="20"></lucide-icon>
                       </div>
-                      <div class="input-group">
-                         <label>{{ i18n.checkout.form.phone }}</label>
-                         <input type="tel">
+                    </div>
+                    <div class="method-info">
+                      <span class="method-name">{{ i18n.checkout.shipping.primeExpress }}</span>
+                      <span class="method-desc">{{ i18n.checkout.shipping.primeExpressDesc }}</span>
+                    </div>
+                    <span class="price">{{ i18n.checkout.shipping.free }}</span>
+                  </label>
+                </div>
+
+                <button type="submit" class="btn-checkout w-fit">{{ i18n.checkout.form.continueToPaymentBtn }}</button>
+              </form>
+            </div>
+          </section>
+
+          <!-- Step 3: Payment -->
+          <section class="checkout-step" [class.active]="currentStep === 3" [class.completed]="currentStep > 3" aria-labelledby="step3-label">
+            <div class="step-header">
+              <div class="step-indicator" aria-hidden="true">
+                <div class="step-num" aria-label="Paso 3">
+                  <span>3</span>
+                </div>
+              </div>
+              <div class="step-meta">
+                <span class="step-label" id="step3-label">{{ i18n.checkout.steps.payment }}</span>
+                <span class="step-status" *ngIf="currentStep > 3" aria-live="polite">{{ i18n.checkout.steps.processed }}</span>
+              </div>
+            </div>
+            
+            <div class="step-content" *ngIf="currentStep === 3" role="region" aria-label="Información de pago">
+              <form (ngSubmit)="onSubmit()" #paymentForm="ngForm">
+                <div class="payment-methods">
+                  <p class="section-label" id="payment-method-label">{{ i18n.checkout.payment.methodTitle }}</p>
+                  <label class="selection-card" [class.active]="true">
+                    <input type="radio" name="payment" checked aria-labelledby="payment-method-label">
+                    <div class="card-visual" aria-hidden="true">
+                      <div class="icon-box">
+                        <lucide-icon name="credit-card" size="20"></lucide-icon>
                       </div>
-                   </div>
-                   <button class="btn btn-primary mt-4">{{ i18n.checkout.form.continueBtn }}</button>
+                    </div>
+                    <div class="method-info">
+                      <span class="method-name">{{ i18n.checkout.payment.card }}</span>
+                      <span class="method-desc">{{ i18n.checkout.payment.cardDesc }}</span>
+                    </div>
+                  </label>
+                  <label class="selection-card disabled">
+                    <input type="radio" name="payment" disabled aria-labelledby="payment-method-label">
+                    <div class="card-visual" aria-hidden="true">
+                      <div class="icon-box">
+                        <lucide-icon name="banknote" size="20"></lucide-icon>
+                      </div>
+                    </div>
+                    <div class="method-info">
+                      <span class="method-name">{{ i18n.checkout.payment.cashOnDelivery }}</span>
+                      <span class="method-desc">{{ i18n.checkout.payment.notAvailable }}</span>
+                    </div>
+                  </label>
                 </div>
-             </div>
-             
-             <!-- Step 2 (Closed) -->
-             <div class="step-card bg-surface-0 border-soft inactive">
-                <div class="step-header flex justify-between items-center text-mist">
-                   <h3 class="font-editorial text-xl">{{ i18n.checkout.steps.shipping }}</h3>
-                   <span>{{ i18n.checkout.steps.edit }}</span>
+                
+                <div class="card-form" role="group" aria-label="Datos de tarjeta">
+                    <div class="input-field">
+                       <label for="cardName">{{ i18n.checkout.payment.cardName }}</label>
+                       <input 
+                        type="text" 
+                        id="cardName"
+                        name="cardName"
+                        [placeholder]="i18n.checkout.payment.cardNamePlaceholder"
+                        autocomplete="cc-name"
+                        required
+                        aria-required="true">
+                    </div>
+                    <div class="input-field">
+                       <label for="cardNumber">{{ i18n.checkout.payment.cardNumber }}</label>
+                       <div class="input-with-icon">
+                         <input 
+                          type="text" 
+                          id="cardNumber"
+                          name="cardNumber"
+                          [placeholder]="i18n.checkout.payment.cardNumberPlaceholder"
+                          inputmode="numeric"
+                          pattern="[0-9\s]{13,19}"
+                          autocomplete="cc-number"
+                          required
+                          aria-required="true">
+                         <div class="card-brands" aria-hidden="true">
+                           <span class="card-brand visa">VISA</span>
+                           <span class="card-brand mc">MC</span>
+                         </div>
+                       </div>
+                    </div>
+                    <div class="form-grid">
+                       <div class="input-field">
+                          <label for="cardExpiry">{{ i18n.checkout.payment.expiry }}</label>
+                          <input 
+                            type="text" 
+                            id="cardExpiry"
+                            name="cardExpiry"
+                            [placeholder]="i18n.checkout.payment.expiryPlaceholder"
+                            inputmode="numeric"
+                            pattern="[0-9/]{5}"
+                            autocomplete="cc-exp"
+                            required
+                            aria-required="true">
+                       </div>
+                       <div class="input-field">
+                          <label for="cardCvv">{{ i18n.checkout.payment.cvv }}</label>
+                          <input 
+                            type="text" 
+                            id="cardCvv"
+                            name="cardCvv"
+                            [placeholder]="i18n.checkout.payment.cvvPlaceholder"
+                            inputmode="numeric"
+                            pattern="[0-9]{3,4}"
+                            autocomplete="cc-csc"
+                            required
+                            aria-required="true">
+                       </div>
+                    </div>
                 </div>
-             </div>
-             
-             <!-- Step 3 (Closed) -->
-             <div class="step-card bg-surface-0 border-soft inactive">
-                <div class="step-header flex justify-between items-center text-mist">
-                   <h3 class="font-editorial text-xl">{{ i18n.checkout.steps.payment }}</h3>
+
+                <div class="terms-notice">
+                  <p>{{ i18n.checkout.final.termsNotice }} <a href="#" rel="noopener noreferrer">{{ i18n.checkout.final.terms }}</a> y <a href="#" rel="noopener noreferrer">{{ i18n.checkout.final.privacy }}</a></p>
                 </div>
-             </div>
+
+                <button type="submit" class="btn-checkout" [disabled]="!paymentForm.valid">
+                  <span class="btn-text">{{ i18n.checkout.final.submitBtn }}</span>
+                  <span class="btn-amount">S/ 3,125.00</span>
+                </button>
+              </form>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- Sidebar Summary -->
+      <aside class="checkout-sidebar" aria-label="Resumen del pedido">
+        <div class="review-box">
+          <div class="review-header">
+            <h3 class="font-editorial summary-title">{{ i18n.checkout.summary.title }}</h3>
+            <span class="item-count">2 {{ i18n.checkout.summary.items }}</span>
           </div>
           
-          <!-- Summary Sidebar -->
-          <aside class="cart-summary bg-surface-1">
-             <h3 class="font-editorial text-2xl mb-6">{{ i18n.checkout.summary.title }}</h3>
-             <div class="summary-line flex justify-between text-secondary mb-3">
-                <span>{{ i18n.checkout.summary.subtotal }} (2 items)</span>
-                <span>625,00 €</span>
-             </div>
-             <div class="summary-line flex justify-between text-secondary mb-6 pb-6 border-b">
-                <span>{{ i18n.checkout.summary.shipping }}</span>
-                <span>{{ i18n.checkout.summary.shippingCalculated }}</span>
-             </div>
-             <div class="summary-line total flex justify-between font-medium text-lg mb-8">
-                <span>{{ i18n.checkout.summary.total }}</span>
-                <span>625,00 €</span>
-             </div>
-          </aside>
-       </div>
+          <div class="item-previews">
+            <div class="item-mini">
+               <div class="mini-img">
+                  <img src="https://res.cloudinary.com/dg7zm6lwk/image/upload/v1773804386/santal_33_bottle_1773803980686_fmi2jg.jpg" alt="Santal 33">
+               </div>
+               <div class="item-info">
+                  <p class="name">Santal 33</p>
+                  <p class="meta">100 ml — Eau de Parfum</p>
+                  <p class="qty">x1</p>
+               </div>
+               <span class="price">S/ 1,280</span>
+            </div>
+            <div class="item-mini">
+               <div class="mini-img">
+                  <img src="https://res.cloudinary.com/dg7zm6lwk/image/upload/v1773804386/baccarat_rouge_bottle_1773804013993_acmbdg.jpg" alt="Baccarat Rouge 540">
+               </div>
+               <div class="item-info">
+                  <p class="name">Baccarat Rouge 540</p>
+                  <p class="meta">70 ml — Extrait de Parfum</p>
+                  <p class="qty">x1</p>
+               </div>
+               <span class="price">S/ 1,845</span>
+            </div>
+          </div>
+
+          <div class="price-breakdown">
+            <div class="row">
+              <span class="lbl">{{ i18n.checkout.summary.subtotal }}</span>
+              <span class="val">S/ 3,125.00</span>
+            </div>
+            <div class="row shipping-row">
+              <span class="lbl">{{ i18n.checkout.summary.shipping }}</span>
+              <span class="val">{{ i18n.checkout.shipping.free }}</span>
+            </div>
+            <div class="total-row">
+              <span class="label">{{ i18n.checkout.summary.total }}</span>
+              <span class="amount font-editorial">S/ 3,125.00</span>
+            </div>
+          </div>
+
+          <div class="secure-badge">
+              <div class="shield-icon" aria-hidden="true">
+                <lucide-icon name="shield-check" size="18"></lucide-icon>
+              </div>
+              <div class="secure-text">
+                <span class="secure-title">{{ i18n.checkout.final.secure }}</span>
+                <span class="secure-desc">{{ i18n.checkout.final.secureDesc }}</span>
+              </div>
+          </div>
+        </div>
+      </aside>
     </div>
+  </div>
+</div>

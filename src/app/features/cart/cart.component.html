@@ -1,77 +1,129 @@
 <div class="cart-page container">
-      <h1 class="font-editorial text-4xl mb-8">{{ i18n.cart.title }}</h1>
-      
-      <div class="cart-layout">
-         <!-- Items List -->
-         <div class="cart-items flex-col gap-6">
-            <div class="cart-item">
-               <div class="item-img" style="background-color: var(--champagne-light);"></div>
-               <div class="item-details flex-col">
-                  <span class="brand label mb-1 text-mist">LE LABO</span>
-                  <div class="flex justify-between items-start">
-                     <h4 class="name text-primary text-xl font-editorial">Santal 33</h4>
-                     <button class="remove-btn">✕</button>
-                  </div>
-                  <span class="variant text-sm text-secondary mt-1">100 ml — Eau de Parfum</span>
-                  
-                  <div class="item-actions mt-auto flex justify-between items-end">
-                     <div class="qty-stepper flex items-center">
-                        <button class="step-btn">−</button>
-                        <span class="qty text-sm">1</span>
-                        <button class="step-btn">+</button>
+   <!-- Title & Count -->
+   <header class="cart-header mb-12">
+      <h1 class="font-editorial text-5xl mb-2">{{ i18n.cart.title }}</h1>
+      <p class="text-secondary text-sm">2 {{ i18n.catalog.resultsTarget }}</p>
+   </header>
+
+   <div class="cart-layout">
+      <!-- Items List -->
+      <div class="cart-items flex-col gap-8">
+         <!-- Item 1 -->
+         <article class="cart-item">
+            <div class="item-visual">
+               <img
+                  src="https://res.cloudinary.com/dg7zm6lwk/image/upload/v1773804386/santal_33_bottle_1773803980686_fmi2jg.jpg"
+                  alt="Santal 33">
+            </div>
+            <div class="item-details">
+               <div class="brand-row flex justify-between items-start">
+                  <div class="brand-info">
+                     <span class="brand-name label text-mist">LE LABO</span>
+                     <div class="sillage-badge flex items-center gap-1 mt-1">
+                        <div class="dot active"></div>
+                        <div class="dot active"></div>
+                        <div class="dot active"></div>
+                        <div class="dot"></div>
+                        <span class="text-[9px] uppercase tracking-tighter text-tertiary">Sillage: Intenso</span>
                      </div>
-                     <p class="price font-dm-sans font-medium">280,00 €</p>
                   </div>
+                  <button class="remove-btn" [attr.aria-label]="'Remove'">
+                     <lucide-icon name="trash-2" size="18"></lucide-icon>
+                  </button>
+               </div>
+
+               <h4 class="product-name font-editorial text-2xl">Santal 33</h4>
+               <p class="product-variant text-sm text-secondary">100 ml — Eau de Parfum</p>
+
+               <div class="item-footer mt-auto flex justify-between items-center">
+                  <div class="qty-stepper">
+                     <button class="step-btn">
+                        <lucide-icon name="minus" size="14"></lucide-icon>
+                     </button>
+                     <span class="qty">1</span>
+                     <button class="step-btn">
+                        <lucide-icon name="plus" size="14"></lucide-icon>
+                     </button>
+                  </div>
+                  <p class="item-price font-dm-sans">S/ 1,280.00</p>
                </div>
             </div>
-            
-            <div class="cart-item">
-               <div class="item-img" style="background-color: var(--champagne-light);"></div>
-               <div class="item-details flex-col">
-                  <span class="brand label mb-1 text-mist">MAISON FRANCIS KURKDJIAN</span>
-                  <div class="flex justify-between items-start">
-                     <h4 class="name text-primary text-xl font-editorial">Baccarat Rouge 540</h4>
-                     <button class="remove-btn">✕</button>
-                  </div>
-                  <span class="variant text-sm text-secondary mt-1">70 ml — Extrait</span>
-                  
-                  <div class="item-actions mt-auto flex justify-between items-end">
-                     <div class="qty-stepper flex items-center">
-                        <button class="step-btn">−</button>
-                        <span class="qty text-sm">1</span>
-                        <button class="step-btn">+</button>
+         </article>
+
+         <!-- Item 2 -->
+         <article class="cart-item">
+            <div class="item-visual">
+               <img
+                  src="https://res.cloudinary.com/dg7zm6lwk/image/upload/v1773804386/baccarat_rouge_bottle_1773804013993_acmbdg.jpg"
+                  alt="Baccarat Rouge">
+            </div>
+            <div class="item-details">
+               <div class="brand-row flex justify-between items-start">
+                  <div class="brand-info">
+                     <span class="brand-name label text-mist">Maison Francis Kurkdjian</span>
+                     <div class="sillage-badge flex items-center gap-1 mt-1">
+                        <div class="dot active"></div>
+                        <div class="dot active"></div>
+                        <div class="dot active"></div>
+                        <div class="dot active"></div>
+                        <span class="text-[9px] uppercase tracking-tighter text-tertiary">Sillage: Supremo</span>
                      </div>
-                     <p class="price font-dm-sans font-medium">345,00 €</p>
                   </div>
+                  <button class="remove-btn" [attr.aria-label]="'Remove'">
+                     <lucide-icon name="trash-2" size="18"></lucide-icon>
+                  </button>
                </div>
+
+               <h4 class="product-name font-editorial text-2xl">Baccarat Rouge 540</h4>
+               <p class="product-variant text-sm text-secondary">70 ml — Extrait de Parfum</p>
+
+               <div class="item-footer mt-auto flex justify-between items-center">
+                  <div class="qty-stepper">
+                     <button class="step-btn">
+                        <lucide-icon name="minus" size="14"></lucide-icon>
+                     </button>
+                     <span class="qty">1</span>
+                     <button class="step-btn">
+                        <lucide-icon name="plus" size="14"></lucide-icon>
+                     </button>
+                  </div>
+                  <p class="item-price font-dm-sans">S/ 1,845.00</p>
+               </div>
+            </div>
+         </article>
+      </div>
+
+      <!-- Summary Panel -->
+      <aside class="cart-summary bg-surface-1 shadow-elevation">
+         <h3 class="font-editorial text-2xl mb-8">{{ i18n.cart.summary.title }}</h3>
+
+         <div class="summary-details">
+            <div class="summary-row flex justify-between mb-4">
+               <span class="text-secondary">{{ i18n.cart.summary.subtotal }}</span>
+               <span class="font-medium">S/ 3,125.00</span>
+            </div>
+
+            <div class="summary-row flex justify-between mb-4">
+               <span class="text-secondary">{{ i18n.cart.summary.shipping }}</span>
+               <span class="text-flacon font-medium">{{ i18n.cart.summary.shippingFree }}</span>
+            </div>
+
+            <div class="summary-divider mb-6"></div>
+
+            <div class="summary-row total flex justify-between items-center mb-8">
+               <span class="text-xl font-editorial">{{ i18n.cart.summary.total }}</span>
+               <span class="text-2xl font-dm-sans font-medium">S/ 3,125.00</span>
+            </div>
+
+            <button class="btn btn-primary w-full shadow-elevation mb-4" routerLink="/checkout">
+               {{ i18n.cart.summary.checkoutBtn }}
+            </button>
+
+            <div class="secure-tag flex items-center justify-center gap-2 text-tertiary">
+               <lucide-icon name="shopping-bag" size="12"></lucide-icon>
+               <span class="text-xs uppercase letter-spacing-wide">{{ i18n.global.secureAndEncrypted }}</span>
             </div>
          </div>
-         
-         <!-- Summary -->
-         <aside class="cart-summary bg-surface-1">
-            <h3 class="font-editorial text-2xl mb-6">{{ i18n.cart.summary.title }}</h3>
-            
-            <div class="summary-line flex justify-between text-secondary mb-3">
-               <span>{{ i18n.cart.summary.subtotal }}</span>
-               <span>625,00 €</span>
-            </div>
-            
-            <div class="summary-line flex justify-between text-secondary mb-3">
-               <span>{{ i18n.cart.summary.shipping }}</span>
-               <span>{{ i18n.cart.summary.shippingFree }}</span>
-            </div>
-            
-            <div class="summary-line flex justify-between text-secondary mb-6 pb-6 border-b">
-               <span>{{ i18n.cart.summary.taxesIncluded }}</span>
-            </div>
-            
-            <div class="summary-line total flex justify-between font-medium text-lg mb-8">
-               <span>{{ i18n.cart.summary.total }}</span>
-               <span>625,00 €</span>
-            </div>
-            
-            <button class="btn btn-primary w-full shadow-elevation" routerLink="/checkout">{{ i18n.cart.summary.checkoutBtn }}</button>
-            <p class="secure-checkout text-xs text-center text-tertiary mt-4 cursor-pointer">{{ i18n.global.secureAndEncrypted }}</p>
-         </aside>
-      </div>
-    </div>
+      </aside>
+   </div>
+</div>

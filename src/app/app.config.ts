@@ -4,7 +4,7 @@ import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { LucideAngularModule, Search, User, Heart, ShoppingBag } from 'lucide-angular';
+import { LucideAngularModule, Search, User, Heart, ShoppingBag, Menu, X, Trash2, Plus, Minus, CreditCard, Truck, ChevronRight, ShieldCheck, Check, Banknote } from 'lucide-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,6 +16,6 @@ export const appConfig: ApplicationConfig = {
     ),
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
-    importProvidersFrom(LucideAngularModule.pick({ Search, User, Heart, ShoppingBag }))
+    importProvidersFrom(LucideAngularModule.pick({ Search, User, Heart, ShoppingBag, Menu, X, Trash2, Plus, Minus, CreditCard, Truck, ChevronRight, ShieldCheck, Check, Banknote }))
   ],
 };

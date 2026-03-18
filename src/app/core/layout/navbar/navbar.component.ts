@@ -11,4 +11,13 @@ import { i18n } from '../../../shared/data/i18n';
 })
 export class NavbarComponent {
    i18n = i18n;
+   isMenuOpen = false;
+
+   toggleMenu() {
+     this.isMenuOpen = !this.isMenuOpen;
+   }
+
+   closeMenu() {
+     this.isMenuOpen = false;
+   }
 }
