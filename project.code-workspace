@@ -1,0 +1,38 @@
+{
+    "folders": [
+        {
+            "name": "root",
+            "path": "."
+        },
+        {
+            "name": "src",
+            "path": "src"
+        }
+    ],
+    "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "files.exclude": {
+            "**/.git": true,
+            "**/.svn": true,
+            "**/.hg": true,
+            "**/.DS_Store": true,
+            "**/Thumbs.db": true,
+            "**/flutter/ephemeral": true,
+            "**/Flutter/ephemeral": true,
+            "**/.symlinks": true,
+            "**/.plugin_symlinks": true,
+
+            ".agent": true,
+            ".agents": true,
+            ".claude": true,
+            ".kiro": true,
+            ".trae": true,
+
+            ".angular": true,
+            ".vscode": true,
+            "node_modules": true,
+            "dist": true,
+        }   
+    }
+}

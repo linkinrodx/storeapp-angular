@@ -10,8 +10,8 @@ export interface Product {
 }
 
 export const PRODUCTS: Product[] = [
-    { id: 1, name: 'Santal 33', brand: 'LE LABO', price: 280, family: 'wood', category: 'perfume', concentration: 'Eau de Parfum', imageUrl: ['products/santal-33.png'] },
-    { id: 2, name: 'Baccarat Rouge 540', brand: 'MAISON FRANCIS KURKDJIAN', price: 345, family: 'oriental', category: 'perfume', concentration: 'Extrait', imageUrl: ["products/baccarat-rouge.png"] },
+    { id: 1, name: 'Santal 33', brand: 'LE LABO', price: 280, family: 'wood', category: 'perfume', concentration: 'Eau de Parfum', imageUrl: ['https://res.cloudinary.com/dg7zm6lwk/image/upload/v1773466479/luxury_perfume_bottle_minimalist_1773465418114_p6s2t1.png'] },
+    { id: 2, name: 'Baccarat Rouge 540', brand: 'MAISON FRANCIS KURKDJIAN', price: 345, family: 'oriental', category: 'perfume', concentration: 'Extrait', imageUrl: ["https://res.cloudinary.com/dg7zm6lwk/image/upload/v1773466479/luxury_perfume_bottle_minimalist_1773465418114_p6s2t1.png"] },
     { id: 3, name: 'Rose Prick', brand: 'TOM FORD', price: 395, family: 'floral', category: 'perfume', concentration: 'Eau de Parfum', imageUrl: ['https://res.cloudinary.com/dg7zm6lwk/image/upload/v1773466479/luxury_perfume_bottle_minimalist_1773465418114_p6s2t1.png'] },
     { id: 4, name: 'Gypsy Water', brand: 'BYREDO', price: 205, family: 'fresh', category: 'perfume', concentration: 'Eau de Parfum', imageUrl: ['https://res.cloudinary.com/dg7zm6lwk/image/upload/v1773466479/luxury_perfume_bottle_minimalist_1773465418114_p6s2t1.png'] },
     { id: 5, name: 'Angels\' Share', brand: 'KILIAN', price: 230, family: 'gourmand', category: 'perfume', concentration: 'Eau de Parfum', imageUrl: ['https://res.cloudinary.com/dg7zm6lwk/image/upload/v1773466479/luxury_perfume_bottle_minimalist_1773465418114_p6s2t1.png'] },
