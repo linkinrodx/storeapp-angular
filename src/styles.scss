@@ -11,6 +11,11 @@
   @media (min-width: 768px) {
     padding: 0 calc(var(--spacing-base) * 6);
   }
+
+  @media (max-width: 1199px) {
+    max-width: 85vw;
+    margin: 0 30px;
+  }
 }
 
 /* Responsive Utilities */
